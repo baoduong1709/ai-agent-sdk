@@ -1,0 +1,62 @@
+{
+  "name": "agent-studio-sdk",
+  "version": "0.1.0",
+  "description": "Composable AI agent runtime and local configuration studio",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./openai": {
+      "types": "./dist/openai.d.ts",
+      "default": "./dist/openai.js"
+    },
+    "./models": {
+      "types": "./dist/models.d.ts",
+      "default": "./dist/models.js"
+    },
+    "./http-tool": {
+      "types": "./dist/http-tool.d.ts",
+      "default": "./dist/http-tool.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp.d.ts",
+      "default": "./dist/mcp.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "openai": ["./dist/openai.d.ts"],
+      "models": ["./dist/models.d.ts"],
+      "http-tool": ["./dist/http-tool.d.ts"],
+      "mcp": ["./dist/mcp.d.ts"]
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prestart": "npm run build",
+    "start": "node --env-file-if-exists=.env studio/server.js",
+    "prepack": "npm run build",
+    "test": "npm run build && node --test"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.28.2",
+    "fflate": "^0.8.3",
+    "typescript": "^5.9.3"
+  }
+}

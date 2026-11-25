@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Form của tool</title>
+<script>
+// MCP Apps sandbox proxy. The Studio serves this page with a policy that gives it an opaque origin and blocks every
+// request, so the app it shows cannot read Studio data or call its API. The proxy asks the chat for the app document,
+// then replaces itself with it: the policy stays with the frame, and the app talks to the chat directly over the MCP Apps
+// JSON-RPC protocol.
+(() => {
+  window.addEventListener('message', function receive(event) {
+    const message = event.data;
+    if (event.source !== parent || message?.jsonrpc !== '2.0' || message.method !== 'ui/notifications/sandbox-resource-ready') return;
+    const html = message.params?.html;
+    if (typeof html !== 'string' || !html.trim()) return;
+    window.removeEventListener('message', receive);
+    document.open();
+    document.write(html);
+    document.close();
+  });
+  parent.postMessage({ jsonrpc: '2.0', method: 'ui/notifications/sandbox-proxy-ready', params: {} }, '*');
+})();
+</script>
+</head>
+<body></body>
+</html>

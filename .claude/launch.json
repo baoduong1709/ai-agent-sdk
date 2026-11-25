@@ -1,0 +1,37 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "studio",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start"],
+      "port": 4173
+    },
+    {
+      "name": "mymadison-backend",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "D:\\MADISON\\ai-agent-sdk\\.claude\\mymadison-backend.cmd"],
+      "port": 4000
+    },
+    {
+      "name": "mymadison-frontend",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "D:\\MADISON\\ai-agent-sdk\\.claude\\mymadison-frontend.cmd"],
+      "port": 5180,
+      "autoPort": false
+    },
+    {
+      "name": "mymadison-sdk-backend",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "D:\\MADISON\\ai-agent-sdk\\.claude\\mymadison-sdk-backend.cmd"],
+      "port": 4000
+    },
+    {
+      "name": "mymadison-sdk-frontend",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "D:\\MADISON\\ai-agent-sdk\\.claude\\mymadison-sdk-frontend.cmd"],
+      "port": 5180,
+      "autoPort": false
+    }
+  ]
+}
